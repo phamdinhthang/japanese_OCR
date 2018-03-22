@@ -16,3 +16,28 @@ Data used to train and validate the CNN model shall be stored as **array**, in *
 The block number at the end of the filename (before file extension) is used when dataset is too large to stored in a single file (i.e more than 2GB)
 
 ### 2. Convolutional Neural Network Structure
+To enhanced the predictive power of the CNN, various network structure have been implemented, in additional to some classical CNN layers. Within this CNN model to recognize Japanese character, there are five types of layers:
+* Convolutional Layer: the main parameters are filter width, filter height and number of filters
+* Pooling Layer: the main parameters are pooling width and pooling height
+* Flatten Layer: no parameter
+* Dense Layer: the main parameter are number of nodes.
+* Residual Block: taken idea from this [paper](https://arxiv.org/pdf/1512.03385v1.pdf) by He. & Zhang. The main parameters are width and height of the inside Convolutional layer
+* Inception Layer: taken idea from this [paper](https://www.cv-foundation.org/openaccess/content_cvpr_2015/papers/Szegedy_Going_Deeper_With_2015_CVPR_paper.pdf) by Szegedy. The main parameters are size of the one by one layer,  a list of tuples for the inside Convolutional Layer: list of tuple [(filter_h,filter_w,n_filters),...]
+
+An network can be defined as a list of sequential elements, just like in Keras:
+```
+self.network_structure = [Convolutinal_Layer(3,3,16),
+                                      Residual_Block(8,8),
+                                      Residual_Block(8,8),
+                                      Convolutinal_Layer(3,3,32),
+                                      Pooling_Layer(2,2),
+                                      Convolutinal_Layer(3,3,64),
+                                      Pooling_Layer(2,2),
+                                      Convolutinal_Layer(3,3,128),
+                                      Pooling_Layer(2,2),
+                                      Inception_Block(32,[(3,3,32),(5,5,16),(7,7,64)]),
+                                      Flatten_Layer(),
+                                      Dense_Layer(1000),
+                                      Dense_Layer(1000),
+                                      Dense_Layer(self.data.n_classes,use_relu=False)]
+```

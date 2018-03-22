@@ -11,7 +11,8 @@ Data used to train and validate the CNN model shall be stored as **array**, in *
 * train_lbl_one_hot0.h5: hdf format, dataset name = 'train_lbl_one_hot0', contain one hot encoded image label for the block 0
 * test_img0.h5: hdf5 format, dataset name = 'test_img0', contain image data for the block 0 
 * test_lbl_one_hot0.h5: numpy format, dataset name = 'test_lbl_one_hot0', contain one hot encoded image label for the block 0
+* lbl_list.npy: numpy format, contain the list of label. Labels order must be identical to the one use to onehot encode the label
 
 The block number at the end of the filename (before file extension) is used when dataset is too large to stored in a single file (i.e more than 2GB)
 
-
+### 2. Convolutional Neural Network Structure

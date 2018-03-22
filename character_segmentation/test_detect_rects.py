@@ -2,7 +2,7 @@
 """
 Created on Sat Jan 20 21:34:06 2018
 
-@author: Home
+@author: phamdinhthang
 """
 
 import sys

@@ -60,3 +60,20 @@ There are 4 arguments for the script:
 * batch_size: Size of the mini-batch Gradient Descent
 * device: either `cpu` or `gpu`
 
+After training completed, the tensorflow computation graph and saved session will be saved in the folder `/saved_session/`
+
+### 4. Test model
+After being trained, model shall be validated using both the training dataset and testing dataset. Selected metric was prediction accuracy. Train score shall be obtained using the training dataset, to check wheither the model fits well with the training data, and Test score shall be obtained using the testing dataset, to check the ability of the model to generalized prediction to unseen sample.
+
+To test the model: 
+
+```
+python test_model.py test_parameter
+```
+There are 4 options for the test_parameter:
+* train: Validate the prediction accuracy on training dataset
+* test: Validate the prediction accuracy on testing dataset
+* img_path: absolute path to the character image, filetypes: `.jpg` or `.png`
+* img_folder_path: absolute path to the folder contains character image, filetypes: `.jpg` or `.png`
+
+

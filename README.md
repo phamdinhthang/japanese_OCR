@@ -29,7 +29,7 @@ To enhanced the predictive power of the CNN, various network structure have been
 * Residual Block: taken idea from this [paper](https://arxiv.org/pdf/1512.03385v1.pdf) by He. & Zhang. The main parameters are width and height of the inside Convolutional layer
 * Inception Layer: taken idea from this [paper](https://www.cv-foundation.org/openaccess/content_cvpr_2015/papers/Szegedy_Going_Deeper_With_2015_CVPR_paper.pdf) by Szegedy. The main parameters are size of the one by one layer,  a list of tuples for the inside Convolutional Layer: list of tuple [(filter_h,filter_w,n_filters),...]
 
-An network can be defined as a list of sequential elements, just like in Keras:
+A network structure can be defined as a list of sequential elements, just like in Keras:
 ```
 self.network_structure = [Convolutinal_Layer(3,3,16),
                                       Residual_Block(8,8),

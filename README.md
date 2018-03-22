@@ -15,6 +15,11 @@ Data used to train and validate the CNN model shall be stored as **array**, in *
 
 The block number at the end of the filename (before file extension) is used when dataset is too large to stored in a single file (i.e more than 2GB)
 
+Shape of the data array
+* train_img0.h5: (n_samples, image_height, image_width, n_channel), elements type: integer. n_channel usually = 3
+* train_lbl_one_hot0.npy: (n_samples, n_classes), elements type: integer
+* lbl_list.npy: (1, n_classes), elements type: string or integer. 
+
 ### 2. Convolutional Neural Network Structure
 To enhanced the predictive power of the CNN, various network structure have been implemented, in additional to some classical CNN layers. Within this CNN model to recognize Japanese character, there are five types of layers:
 * Convolutional Layer: the main parameters are filter width, filter height and number of filters
@@ -41,3 +46,17 @@ self.network_structure = [Convolutinal_Layer(3,3,16),
                                       Dense_Layer(1000),
                                       Dense_Layer(self.data.n_classes,use_relu=False)]
 ```
+
+### 3. Train model
+Training module assume that training and testing data have been put into the `/dataset/` folder with structure defined in section 1. Training can be done using either `cpu` or `gpu`. With CPU, speed may be very low, hence simpler network structure, smaller dataset is prefered.
+To train the model:
+
+```
+python train_model.py l2_beta epochs batch_size device
+```
+There are 4 arguments for the script:
+* l2_beta: coefficient of the L2 regularization. Value can be set in range {0.1, 0.01, 0.001, etc}
+* epochs: number of running epochs for the Adam Optimizer
+* batch_size: Size of the mini-batch Gradient Descent
+* device: either `cpu` or `gpu`
+

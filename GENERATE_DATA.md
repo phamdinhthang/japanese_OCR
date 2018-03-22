@@ -4,7 +4,7 @@ An engine to generate synthesized data is provided to enhanced the performance o
 Script to generate synthesized data
 
 ```
-cd /synthesized_training_data_and_augmentation/
+cd synthesized_training_data_and_augmentation/
 python generate_image_data.py char_set mode image_size augmentation font_path
 ```
 
